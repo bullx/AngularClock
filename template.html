@@ -1,0 +1,45 @@
+<div class="widget-clock" ng-class="themeClass">
+
+    <div class="analog" ng-if="analog">
+        <div class="square">
+            <!--
+            Create a view box of 100* 100 and starting co ordinates as 0,0
+            -->
+            <svg viewBox="0 0 100 100">
+                <!--
+                The image contains the backgorund of the wall clock with the numbers
+                -->
+                <image xlink:href="https://cssanimation.rocks/images/posts/clocks/ios_clock.svg" height="100" width="100"/>
+                <!--
+                perform a translate operation
+                -->
+                <g transform="translate(50,50)">
+                    <!--
+                    make a circle
+                    -->
+                    <circle cx="100" cy="100" r="50" />
+                    <!--
+                    make minutes dotted lines before the numbers. y1 and y2 are co-ordinates and perform rotation using maths logic
+                    -->
+                    <line ng-repeat="minutes in minuteshand track by $index" class="minor" y1="35" y2="38" ng-attr-transform="rotate({{($index / minuteshand.length)*360}})" />
+
+                    <!--
+                    make the hours line.y1 and y2 are co-ordinates and perform rotation using maths logic
+                    -->
+                    <line class="hour" y1="3" y2="-20" ng-attr-transform="rotate({{ (mins / 2) +(30 * hrs)}}) " style="stroke: red ;stroke-width: 2" />
+
+                    <!--
+                    make the minutes line.y1 and y2 are co-ordinates and perform rotation using maths logic
+                    -->
+                    <line class="minute" y1="6" y2="-30" ng-attr-transform="rotate({{ (secs / 10) +(6 * mins)}})" style="stroke: green ;stroke-width: 2"/>
+
+                    <!--
+                    make the seconds line.y1 and y2 are co-ordinates and perform rotation using maths logic
+                    -->
+                    <line class="second" y1="10" y2="-40"  ng-attr-transform="rotate({{secs*6}})" />
+
+                </g>
+            </svg>
+        </div>
+        </div>
+</div>

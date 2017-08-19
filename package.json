@@ -1,0 +1,9 @@
+{
+  "name": "Angular-Clock",
+  "version": "1",
+  "author": "Karan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
